@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include "deal.c"
 
 int main(void)
 {
-    // Code
+    mainDeal();
     return 0;
 }
