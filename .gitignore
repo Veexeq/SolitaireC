@@ -7,6 +7,9 @@
 *.obj
 *.elf
 
+# Visual Studio Code files
+.code-workspace
+
 # Linker output
 *.ilk
 *.map
