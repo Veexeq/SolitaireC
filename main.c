@@ -2,6 +2,6 @@
 
 int main(void)
 {
-    printf("Adding a mistake\n");
+    // Code
     return 0;
 }
