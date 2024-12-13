@@ -2,6 +2,6 @@
 
 int main(void)
 {
-    printf("TEST\n");
+    printf("Adding a mistake\n");
     return 0;
 }
