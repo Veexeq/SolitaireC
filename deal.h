@@ -14,10 +14,8 @@
 
 // Structs, typedefs
 
-/*
-Two suits: 0 - hearts; 1 - spades
-Values like in solitaire sequences: 0 - Ace, 1 - (2), 2 - (3) ... 10 - Jack, 11 - Queen, 12 - King
-*/
+/*  Two suits: 0 - hearts; 1 - spades
+    Values like in solitaire sequences: 0 - Ace, 1 - (2), 2 - (3) ... 10 - Jack, 11 - Queen, 12 - King  */
 typedef struct Card_Struct
 {
     int suit;
@@ -26,11 +24,13 @@ typedef struct Card_Struct
 } Card;
 
 // Prototypes 
-bool deal_cards();
+void deal_cards();
 void queue_fill();
+void end_card_initialization();
 
 // Externs
 extern Card Tableau[COLUMN_NUMBER][MAX_COLUMN_LENGTH];
 extern Card Queue[CARD_NUMBER]; 
+extern Card End_Card;
 
 #endif

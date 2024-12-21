@@ -5,7 +5,8 @@
 int main(void)
 {
     deal_cards();
-    print_queue();
+
     
+        
     return 0;
 }

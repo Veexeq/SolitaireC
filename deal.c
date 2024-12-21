@@ -4,13 +4,40 @@
 Card Tableau[COLUMN_NUMBER][MAX_COLUMN_LENGTH];
 Card Queue[CARD_NUMBER];
 
+// Card indicating end of the row
+Card End_Card;
+
+// Global dealing variable, points to which card is now to be dealt
+int Dealing_Idx;
+
 // Dealing two suits
-bool deal_cards()
+void deal_cards()
 {
     // Initialization, fill the queue with 104 cards
     queue_fill();
-    
-    return true;
+    end_card_initialization();
+
+    // Fill the tableau with the first deal: 4*6 + 6*5 = 54 cards
+    for (int col = 0; col < 10; col++)
+    {
+        int cards_in_col = (col < 4) ? 6 : 5;
+        for (int row = 0; row < cards_in_col; row++)
+        {
+            Tableau[col][row] = Queue[Dealing_Idx];
+            Dealing_Idx++;
+        }
+
+        // Place an end card at the end of the column
+        Tableau[col][cards_in_col] = End_Card;
+    }
+
+}
+
+void end_card_initialization()
+{
+    End_Card.value = -1;
+    End_Card.suit = -1;
+    End_Card.flipped = false;
 }
 
 void queue_fill()
