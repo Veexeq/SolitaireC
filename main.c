@@ -42,8 +42,13 @@ int main(void)
                 else if (correct == 0)
                 {
                     // Deal from the stack mechanic to be implemented
-                    // Exit the input loop
                     printf("Dealing cards from the stack...\n");
+
+                    // Mark choice as a deal request
+                    choice[0] = -1;
+                    choice[1] = -1;
+
+                    // Exit the input loop
                     i = 2;
                     break;
                 }
