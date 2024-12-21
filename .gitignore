@@ -7,9 +7,6 @@
 *.obj
 *.elf
 
-# Binary files
-.exe
-
 # Visual Studio Code files
 .code-workspace
 .vscode/
