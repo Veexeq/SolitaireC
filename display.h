@@ -7,4 +7,5 @@ void T_print_queue();
 void T_display_tableau();
 void display_tableau();
 int find_max_length();
+void display_main_menu();
 

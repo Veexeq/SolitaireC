@@ -1,6 +1,40 @@
 #include "display.h"
 
-// Testing methods (T_...)
+// Testing methods are marked with 'T_' (T_...)
+
+void display_main_menu()
+{
+    printf("=== SPIDER SOLITAIRE ===\n");
+    printf("1. Start new game\n");
+    printf("2. Resume previous game\n");
+    printf("3. Your stats\n");
+    printf("4. About\n");
+    printf("5. Exit\n\n");
+    
+    bool correct = false;
+    int choice;
+    do
+    {
+        printf("Type your choice number: ");
+        scanf("%d", &choice);
+
+        if (!(choice >= 1 && choice <= 5))
+            printf("Your choice is incorrect. Type number 1-5.\n");
+        else
+            correct = true;
+        
+    } while (!correct);
+    
+    switch (choice)
+    {
+    case 1:
+        // Exiting this method <=> progressing further in main()
+        // system("cls");
+        return;
+        break;
+        // Other cases are to be developed
+    }
+}
 
 void T_print_queue()
 {
