@@ -10,6 +10,8 @@ Card End_Card;
 // Global dealing variable, points to which card is now to be dealt
 int Dealing_Idx;
 
+int Available_Deals = 5;
+
 // Dealing two suits
 void deal_cards()
 {

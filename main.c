@@ -6,7 +6,7 @@
 int main(void)
 {
     // Main menu part
-    display_main_menu();
+    // display_main_menu();
 
     // Beginning of the game
     deal_cards();

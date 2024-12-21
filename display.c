@@ -93,6 +93,8 @@ void T_display_tableau()
 
 void display_tableau()
 {
+    const int STACK_OFFSET = 55;
+
     // max_length defines row number after which everything is "empty"
     int max_length = find_max_length();
 
@@ -114,4 +116,5 @@ void display_tableau()
         }
         printf("\n");
     }
+    printf("\n%*cAvaliable deals: [%d]\n", STACK_OFFSET, ' ', Available_Deals);
 }

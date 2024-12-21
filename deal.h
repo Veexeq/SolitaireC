@@ -34,4 +34,6 @@ extern Card Tableau[COLUMN_NUMBER][MAX_COLUMN_LENGTH];
 extern Card Queue[CARD_NUMBER]; 
 extern Card End_Card;
 
+extern int Available_Deals;
+
 #endif
