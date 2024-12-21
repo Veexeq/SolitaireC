@@ -14,8 +14,10 @@ int main(void)
         display_tableau();
 
         printf("\n");
-        
+
         int choice[2];
+        bool correct = false;
+
         for (int i = 0; i < 2; i++)
         {
             do
@@ -30,7 +32,11 @@ int main(void)
                     break;
                 }
                 scanf("%d", &choice[i]);
-            } while (!valid_choice(choice[i]));
+
+                correct = valid_choice(choice[i]);
+                if (!correct)
+                    printf("Incorrect column number. Please input 1-10.\n");
+            } while (!correct);
         }
         printf("\n");
 
