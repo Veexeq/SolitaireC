@@ -27,6 +27,7 @@ typedef struct Card_Struct
 void deal_cards();
 void queue_fill();
 void end_card_initialization();
+void flip_top();
 
 // Externs
 extern Card Tableau[COLUMN_NUMBER][MAX_COLUMN_LENGTH];

@@ -30,6 +30,8 @@ void deal_cards()
         // Place an end card at the end of the column
         Tableau[col][cards_in_col] = End_Card;
     }
+
+    flip_top();
 }
 
 void end_card_initialization()
@@ -72,5 +74,23 @@ void queue_fill()
         Queue[go_to_idx] = temp;
 
         idx++;
+    }
+}
+
+void flip_top()
+{
+    for (int col = 0; col < COLUMN_NUMBER; col++)
+    {
+        // Find the index of the end card
+        int end_idx = 0;
+        Card curr = Tableau[col][0];
+
+        while (curr.value > 0)
+        {
+            end_idx++;
+            curr = Tableau[col][end_idx];
+        }
+
+        Tableau[col][end_idx - 1].flipped = true;
     }
 }

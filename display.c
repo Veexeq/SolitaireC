@@ -13,10 +13,8 @@ void T_print_queue()
     }
 }
 
-void T_display_tableau()
+int find_max_length()
 {
-    printf("Printing the tableau. Card template: (value, suit)\n");
-    
     // max_length defines row number after which everything is "empty"
     int max_length = 0;
     for (int col = 0; col < COLUMN_NUMBER; col++)
@@ -34,6 +32,16 @@ void T_display_tableau()
         max_length = fmax(max_length, row_idx);
     }
 
+    return max_length;
+}
+
+void T_display_tableau()
+{
+    printf("Printing the tableau. Card template: (value, suit)\n");
+    
+    // max_length defines row number after which everything is "empty"
+    int max_length = find_max_length();
+
     // Print the tableau row-by-row up to the pivot
     for (int row = 0; row < max_length; row++)
     {
@@ -44,6 +52,31 @@ void T_display_tableau()
             // Do not print empty cards and the end card
             if (!(curr.value <= 0))
                 printf("(%d, %d)\t", curr.value, curr.suit);
+        }
+        printf("\n");
+    }
+}
+
+void display_tableau()
+{
+    // max_length defines row number after which everything is "empty"
+    int max_length = find_max_length();
+
+    // Print the tableau row-by-row up to the pivot
+    for (int row = 0; row < max_length; row++)
+    {
+        for (int col = 0; col < COLUMN_NUMBER; col++)
+        {
+            Card curr = Tableau[col][row];
+
+            // Do not print empty cards and the end card
+            if (!(curr.value <= 0))
+            {
+                if (!curr.flipped)
+                    printf("(X, X)\t");
+                else
+                    printf("(%d, %d)\t", curr.value, curr.suit);
+            }
         }
         printf("\n");
     }
