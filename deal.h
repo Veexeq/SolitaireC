@@ -15,7 +15,7 @@
 // Structs, typedefs
 
 /*  Two suits: 0 - hearts; 1 - spades
-    Values like in solitaire sequences: 0 - Ace, 1 - (2), 2 - (3) ... 10 - Jack, 11 - Queen, 12 - King  */
+    Values like in solitaire sequences: 1 - Ace, 2 - (2), 3 - (3) ... 11 - Jack, 12 - Queen, 13 - King  */
 typedef struct Card_Struct
 {
     int suit;

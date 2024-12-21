@@ -30,7 +30,6 @@ void deal_cards()
         // Place an end card at the end of the column
         Tableau[col][cards_in_col] = End_Card;
     }
-
 }
 
 void end_card_initialization()
@@ -51,7 +50,7 @@ void queue_fill()
     while (idx < CARD_NUMBER)
     {
         Card curr;
-        curr.value = idx % 13;
+        curr.value = idx % 13 + 1;
         curr.suit = idx / 52;
         curr.flipped = false;
 
