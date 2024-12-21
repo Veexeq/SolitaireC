@@ -19,7 +19,7 @@ int main(void)
         printf("\n");
 
         int choice[2];
-        bool correct = false;
+        int correct = false;
 
         for (int i = 0; i < 2; i++)
         {
@@ -37,9 +37,17 @@ int main(void)
                 scanf("%d", &choice[i]);
 
                 correct = valid_choice(choice[i]);
-                if (!correct)
-                    printf("Incorrect column number. Please input 1-10.\n");
-            } while (!correct);
+                if (correct == -1)
+                    printf("Incorrect column number. Please input 1-10 or 0 in order to deal from the stack.\n");
+                else if (correct == 0)
+                {
+                    // Deal from the stack mechanic to be implemented
+                    // Exit the input loop
+                    printf("Dealing cards from the stack...\n");
+                    i = 2;
+                    break;
+                }
+            } while (correct == -1);
         }
         printf("\n");
 
