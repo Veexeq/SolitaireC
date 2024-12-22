@@ -1,4 +1,5 @@
 #include "deal.h"
+#include "display.h"
 
 // Global Tableau variable and a queue from which cards are pulled
 Card Tableau[COLUMN_NUMBER][MAX_COLUMN_LENGTH];
@@ -144,12 +145,19 @@ void move_cards(int input[])
 
     // Variables regarding "to" column
     int col_to = input[2] - 1;
+
+    // End Card index
     int end_of_to = get_end_card_index(col_to);
-    int row_idx = end_of_to;
+
+    // Last card's of the "to" column index
+    int row_idx = end_of_to - 1;
     
     // Move the sequence
+    Tableau[col_to][row_idx] = Tableau[col_from][row_idx + Current_Sequence_Length];
+    T_display_tableau();
     for (int idx = 0; idx < Current_Sequence_Length; idx++)
         Tableau[col_to][row_idx + idx] = Tableau[col_from][row_from + idx];
+    T_display_tableau();
     
     Card curr = Tableau[col_from][row_from];
     while (curr.value > 0)
@@ -159,9 +167,11 @@ void move_cards(int input[])
         curr.suit = 0;
         curr.flipped = false;
         curr = Tableau[col_from][row_from + 1];
+        T_display_tableau();
     }
 
     // Place an end card at the end of the altered columns
     Tableau[col_to][end_of_to + Current_Sequence_Length] = End_Card;
     Tableau[col_from][row_from] = End_Card;
+    T_display_tableau();
 }

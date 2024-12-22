@@ -89,6 +89,7 @@ void T_display_tableau()
         }
         printf("\n");
     }
+    printf("\n");
 }
 
 void display_tableau()
