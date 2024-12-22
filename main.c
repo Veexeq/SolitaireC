@@ -13,14 +13,21 @@ int main(void)
     // Beginning of the game
     deal_cards();
 
+    /* -1 : game over
+        0 : game is still on
+        1 : won the game    */
+    int end_game = 0;
+
+    // User's input
+    int choice[INPUT_SIZE];
+
     // Every move
-    while (true)
+    while (end_game == 0)
     {
         display_tableau();
         printf("\n");
 
         int validation_code = -1;
-        int choice[INPUT_SIZE];
 
         do
         {
@@ -44,9 +51,20 @@ int main(void)
             printf("\n");
             continue;
         }
-        
-        // Handle correct moves
         printf("\n");
+
+        // Handle correct moves
+        int valid_code = valid_move(choice);
+        switch (valid_code)
+        {
+        case -1:
+            printf("This move is illegal. You cannot move this sequence.\n\n");
+            break;
+        
+        case 0:
+            printf("This move doesn't alter the tableau.\n\n");
+            break;
+        }
 
         // Only for windows terminal
         // system("cls");
