@@ -56,7 +56,13 @@ int main(void)
         }
         printf("\n");
 
-        printf("%d %d\n", choice[0], choice[1]);
+        // Request for a deal from the stack
+        if (choice[0] == -1)
+        {
+            bool dealt = stack_deal();
+            if (!dealt)
+                printf("No more deals from the stack available.\n\n");
+        }
 
         // Only for windows terminal
         // system("cls");

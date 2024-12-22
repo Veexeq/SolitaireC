@@ -28,6 +28,8 @@ void deal_cards();
 void queue_fill();
 void end_card_initialization();
 void flip_top();
+bool stack_deal();
+int get_end_card_index(const int col);
 
 // Externs
 extern Card Tableau[COLUMN_NUMBER][MAX_COLUMN_LENGTH];

@@ -79,6 +79,21 @@ void queue_fill()
     }
 }
 
+int get_end_card_index(const int col)
+{
+    int row = 0;
+    Card curr = Tableau[col][row];
+
+    while (curr.value != -1)
+    {
+        row++;
+        curr = Tableau[col][row];
+    }
+    
+    // This is the index of the row that has an end card
+    return row;
+}
+
 void flip_top()
 {
     for (int col = 0; col < COLUMN_NUMBER; col++)
@@ -95,4 +110,24 @@ void flip_top()
 
         Tableau[col][end_idx - 1].flipped = true;
     }
+}
+
+bool stack_deal()
+{
+    if (Available_Deals == 0)
+        return false;
+    
+    for (int col = 0; col < 10; col++)
+    {
+        int row = get_end_card_index(col);
+
+        Tableau[col][row] = Queue[Dealing_Idx];
+        Dealing_Idx++;
+        Tableau[col][row + 1] = End_Card;
+    }
+
+    flip_top();
+    Available_Deals--;
+
+    return true;
 }
