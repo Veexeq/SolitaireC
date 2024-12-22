@@ -82,6 +82,9 @@ int valid_move(int input[])
 
     if (curr.value != go_to.value - 1)
         return -1;
-        
+    
+    // Pass the length to the deal.c
+    Current_Sequence_Length = seq_length;
+
     return 1;
 }

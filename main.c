@@ -66,6 +66,8 @@ int main(void)
             break;
         }
 
+        move_cards(choice);
+
         // Only for windows terminal
         // system("cls");
     }

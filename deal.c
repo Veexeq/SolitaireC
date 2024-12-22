@@ -11,6 +11,7 @@ Card End_Card;
 int Dealing_Idx;
 
 int Available_Deals = 5;
+int Current_Sequence_Length;
 
 // Dealing two suits
 void deal_cards()
@@ -130,4 +131,37 @@ bool stack_deal()
     Available_Deals--;
 
     return true;
+}
+
+void move_cards(int input[])
+{
+    // Variables holding information about "from" column
+    int col_from = input[0] - 1;
+    int row_from = input[1] - 1;
+
+    // Index of an end card
+    int end_of_from = row_from + Current_Sequence_Length;
+
+    // Variables regarding "to" column
+    int col_to = input[2] - 1;
+    int end_of_to = get_end_card_index(col_to);
+    int row_idx = end_of_to;
+    
+    // Move the sequence
+    for (int idx = 0; idx < Current_Sequence_Length; idx++)
+        Tableau[col_to][row_idx + idx] = Tableau[col_from][row_from + idx];
+    
+    Card curr = Tableau[col_from][row_from];
+    while (curr.value > 0)
+    {
+        // Set to default initialization
+        curr.value = 0;
+        curr.suit = 0;
+        curr.flipped = false;
+        curr = Tableau[col_from][row_from + 1];
+    }
+
+    // Place an end card at the end of the altered columns
+    Tableau[col_to][end_of_to + Current_Sequence_Length] = End_Card;
+    Tableau[col_from][row_from] = End_Card;
 }

@@ -30,6 +30,7 @@ void end_card_initialization();
 void flip_top();
 bool stack_deal();
 int get_end_card_index(const int col);
+void move_cards(int input[]);
 
 // Externs
 extern Card Tableau[COLUMN_NUMBER][MAX_COLUMN_LENGTH];
@@ -37,5 +38,6 @@ extern Card Queue[CARD_NUMBER];
 extern Card End_Card;
 
 extern int Available_Deals;
+extern int Current_Sequence_Length;
 
 #endif
