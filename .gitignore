@@ -8,8 +8,8 @@
 *.elf
 
 # Visual Studio Code files
-.code-workspace
-.vscode/
+*.code-workspace
+*.vscode/
 
 # Linker output
 *.ilk
