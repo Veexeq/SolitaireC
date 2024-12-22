@@ -24,6 +24,7 @@ int main(void)
     // Every move
     while (end_game == 0)
     {
+        flip_top();
         display_tableau();
         printf("\n");
 

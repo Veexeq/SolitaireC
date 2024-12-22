@@ -34,8 +34,6 @@ void deal_cards()
         // Place an end card at the end of the column
         Tableau[col][cards_in_col] = End_Card;
     }
-
-    flip_top();
 }
 
 void end_card_initialization()
@@ -128,7 +126,6 @@ bool stack_deal()
         Tableau[col][row + 1] = End_Card;
     }
 
-    flip_top();
     Available_Deals--;
 
     return true;
@@ -136,42 +133,28 @@ bool stack_deal()
 
 void move_cards(int input[])
 {
-    // Variables holding information about "from" column
+    // "From" column
     int col_from = input[0] - 1;
     int row_from = input[1] - 1;
+    int end_card_from = row_from + Current_Sequence_Length;
 
-    // Index of an end card
-    int end_of_from = row_from + Current_Sequence_Length;
-
-    // Variables regarding "to" column
+    // "To" column
     int col_to = input[2] - 1;
-
-    // End Card index
-    int end_of_to = get_end_card_index(col_to);
-
-    // Last card's of the "to" column index
-    int row_idx = end_of_to - 1;
+    int end_card_to = get_end_card_index(col_to);
+    int row_to = end_card_to - 1;
     
-    // Move the sequence
-    Tableau[col_to][row_idx] = Tableau[col_from][row_idx + Current_Sequence_Length];
-    T_display_tableau();
-    for (int idx = 0; idx < Current_Sequence_Length; idx++)
-        Tableau[col_to][row_idx + idx] = Tableau[col_from][row_from + idx];
-    T_display_tableau();
-    
-    Card curr = Tableau[col_from][row_from];
-    while (curr.value > 0)
+    // Move card to "to"
+    for (int i = 0; i < Current_Sequence_Length; i++)
+        Tableau[col_to][end_card_to + i] = Tableau[col_from][row_from + i];
+
+    Tableau[col_to][end_card_to + Current_Sequence_Length] = End_Card;
+    Tableau[col_from][row_from] = End_Card;
+
+    for (int i = 1; i <= Current_Sequence_Length; i++)
     {
-        // Set to default initialization
+        Card curr = Tableau[col_from][row_from + i];
         curr.value = 0;
         curr.suit = 0;
         curr.flipped = false;
-        curr = Tableau[col_from][row_from + 1];
-        T_display_tableau();
     }
-
-    // Place an end card at the end of the altered columns
-    Tableau[col_to][end_of_to + Current_Sequence_Length] = End_Card;
-    Tableau[col_from][row_from] = End_Card;
-    T_display_tableau();
 }

@@ -86,6 +86,8 @@ void T_display_tableau()
             // Do not print empty cards and the end card
             if (!(curr.value <= 0))
                 printf("(%d, %d)\t", curr.value, curr.suit);
+            if (curr.value == -1)
+                printf("(END)\t");
         }
         printf("\n");
     }
@@ -114,6 +116,8 @@ void display_tableau()
                 else
                     printf("(%d, %d)\t", curr.value, curr.suit);
             }
+            else
+                printf("%*c\t", 6, ' ');
         }
         printf("\n");
     }
